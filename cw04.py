@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 ###
-# Name: YOUR_FULL_NAME_HERE
-# Student ID: ID_HERE
-# Email: CHAPMAN_EMAIL_HERE
+# Name: Jarod Penniman, Jared Love
+# Student ID: 2258875, 1818306
+# Email: penni112@mail.chapman.edu, love115@mail.chapman.edu
 # Course: PHYS220/MATH220/CPSC220 Fall 2017
-# Assignment: HOMEWORK_OR_CLASSWORK_NUMBER
+# Assignment: CW 03
 ###
 
 """Classwork 04
@@ -58,7 +58,119 @@ def gen_gaussian_array(a, b, n=1000):
             x  : [a, ..., b] Array of n equally spaced float64 between a and b
             g  : [g(a), ..., g(b)] Array of Gaussian values matched to x
     """
-    pass
+    x = np.linspace(a,b,n)
+
+    def gauss(x):
+        val = (1/(math.sqrt(2*math.pi)))*math.exp(-(x**2/2))
+        return val
+   
+    g = np.vectorize(gauss)
+    g = g(x)
+    return (x,g)
+
+
+def gen_sinc_list(a, b, n=1000):
+    """gen_sinc_list(a, b, n=1000)
+    Generate a discrete approximation of a sinc function, including its
+    domain and range, stored as a pair of vanilla python lists.
+    
+    Args:
+        a (float) : Lower bound of domain
+        b (float) : Upper bound of domain
+        n (int, optional) : Number of points in domain, defaults to 1000.
+    
+    Returns:
+        (x, s) : Pair of lists of floats
+            x  : [a, ..., b] List of n equally spaced floats between a and b
+            s  : [s(a), ..., s(b)] List of sinc values matched to x
+    """
+    dx = (b-a)/(n-1)                         # spacing between points
+    x = [a + k*dx for k in range(n)]         # domain list
+    
+    # Local implementation of a sinc function
+    def sinc(x):
+        return (math.sin(x)/x)
+    
+    s = [sinc(xk) for xk in x]                  # range list
+    return (x, s)
+
+
+def gen_sinc_array(a, b, n=1000):
+    """gen_sinc_array(a, b, n=1000)
+    Generate a discrete approximation of a sinc function, including its
+    domain and range, stored as a pair of numpy arrays.
+    
+    Args:
+        a (float) : Lower bound of domain
+        b (float) : Upper bound of domain
+        n (int, optional) : Number of points in domain, defaults to 1000.
+    
+    Returns:
+        (x, s) : Pair of numpy arrays of float64
+            x  : [a, ..., b] Array of n equally spaced float64 between a and b
+            s  : [s(a), ..., s(b)] Array of sinc values matched to x
+    """
+    x = np.linspace(a,b,n)
+
+    def sinc(x):
+        val = (math.sin(x)/x)
+        return val
+   
+    s = np.vectorize(sinc)
+    s = s(x)
+    return (x,s)
+
+
+def gen_sinf_list(a, b, n=1000):
+    """gen_sinf_list(a, b, n=1000)
+    Generate a discrete approximation of a sinf function, including its
+    domain and range, stored as a pair of vanilla python lists.
+    
+    Args:
+        a (float) : Lower bound of domain
+        b (float) : Upper bound of domain
+        n (int, optional) : Number of points in domain, defaults to 1000.
+    
+    Returns:
+        (x, sf) : Pair of lists of floats
+            x  : [a, ..., b] List of n equally spaced floats between a and b
+            sf  : [sf(a), ..., sf(b)] List of sinf values matched to x
+    """
+    dx = (b-a)/(n-1)                         # spacing between points
+    x = [a + k*dx for k in range(n)]         # domain list
+    
+    # Local implementation of a sinc function
+    def sinf(x):
+        return (math.sin(1/x))
+    
+    sf = [sinf(xk) for xk in x]                  # range list
+    return (x, sf)
+
+
+def gen_sinf_array(a, b, n=1000):
+    """gen_sinf_array(a, b, n=1000)
+    Generate a discrete approximation of a sinf function, including its
+    domain and range, stored as a pair of numpy arrays.
+    
+    Args:
+        a (float) : Lower bound of domain
+        b (float) : Upper bound of domain
+        n (int, optional) : Number of points in domain, defaults to 1000.
+    
+    Returns:
+        (x, sf) : Pair of numpy arrays of float64
+            x  : [a, ..., b] Array of n equally spaced float64 between a and b
+            sf  : [sf(a), ..., sf(b)] Array of sinf values matched to x
+    """
+    x = np.linspace(a,b,n)
+
+    def sinf(x):
+        val = (math.sin(1/x))
+        return val
+   
+    sf = np.vectorize(sinf)
+    sf = sf(x)
+    return (x,sf)
 
 
 def main(a,b,n=1000):
@@ -88,6 +200,8 @@ def main(a,b,n=1000):
 if __name__ == "__main__":
     # The sys module contains features for running programs
     import sys
+    print(gen_sinf_list(1,2,5))
+    print(gen_sinc_list(1,2,5))
     # The sys.argv list variable contains all command line arguments
     #    sys.argv[0] is the program name always
     #    sys.argv[1] is the first command line argument, etc
@@ -106,4 +220,3 @@ if __name__ == "__main__":
         print("  b : float, upper bound of domain")
         print("  n : integer, number of points in domain")
         exit(1)
-

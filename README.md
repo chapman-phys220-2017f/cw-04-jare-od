@@ -1,8 +1,8 @@
 # PHYS220 CW 4
 
-**Author(s):** **CHANGEME**
+**Author(s):** **Jarod Penniman, Jared Love**
 
-[![Build Status](https://travis-ci.org/chapman-phys220-2017f/cw-04-YOURNAME.svg?branch=master)](https://travis-ci.org/chapman-phys220-2017f/cw-04-YOURNAME)
+[![Build Status](https://travis-ci.org/chapman-phys220-2017f/cw-04-jare-od.svg?branch=master)](https://travis-ci.org/chapman-phys220-2017f/cw-04-jare-od)
 
 ## Specification
 
@@ -19,7 +19,7 @@ Pro-tip: using git to manage conflicts on Jupyter notebooks is a pain. I recomme
 
 Analyze in this section what you found useful about this assignment in your own words. Include any lingering questions or comments that you may have.
 
-**CHANGEME**
+**This assignment was useful to show the efficiency of numpy, and why it is so beneficial to us numpy instead of using vanilla python.  Numpy saves time, and also requres less line of code.**
 
 ## Honor Pledge
 
@@ -30,4 +30,4 @@ I pledge that all the work in this repository is my own with only the following 
 
 Signed,
 
-**YOURNAME**
+**Jarod Penniman, Jared Love**
