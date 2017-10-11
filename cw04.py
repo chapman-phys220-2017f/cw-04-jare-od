@@ -14,7 +14,7 @@ This classwork introduces numpy arrays and compares their performance to
 python lists.
 """
 
-import math
+import math          ### Do not use math if you use numpy.
 import numpy as np
 
 def gen_gaussian_list(a, b, n=1000):
@@ -64,8 +64,8 @@ def gen_gaussian_array(a, b, n=1000):
         val = (1/(math.sqrt(2*math.pi)))*math.exp(-(x**2/2))
         return val
    
-    g = np.vectorize(gauss)
-    g = g(x)
+    g = np.vectorize(gauss)         ### This is not needed here because all operations used in gauss are already vectorized!
+    g = g(x)                        ### No need to redefine. Just return g(x) directly.
     return (x,g)
 
 
@@ -116,8 +116,8 @@ def gen_sinc_array(a, b, n=1000):
         val = (math.sin(x)/x)
         return val
    
-    s = np.vectorize(sinc)
-    s = s(x)
+    s = np.vectorize(sinc)       ### As written above, no need to vectorize. However, you do not handle the x=0 case.
+    s = s(x)                     ### Again, you can just return s(x) directly.
     return (x,s)
 
 
@@ -168,7 +168,7 @@ def gen_sinf_array(a, b, n=1000):
         val = (math.sin(1/x))
         return val
    
-    sf = np.vectorize(sinf)
+    sf = np.vectorize(sinf)   ### Same comments as for sinc above.
     sf = sf(x)
     return (x,sf)
 
